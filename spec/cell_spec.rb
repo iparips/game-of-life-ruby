@@ -3,72 +3,26 @@ require 'cell'
 
 describe Cell do
 
-describe 'is alive' do
 
-  context 'with one neighbour' do
+  [
+    { alive: true, neighbours: 1, next_gen_alive: false },
+    { alive: true, neighbours: 2, next_gen_alive: true },
+    { alive: true, neighbours: 3, next_gen_alive: true },
+    { alive: true, neighbours: 4, next_gen_alive: false },
+    { alive: false, neighbours: 1, next_gen_alive: false },
+    { alive: false, neighbours: 3, next_gen_alive: true },
+  ].each do |rule|
 
-    it 'dies' do
-      cell = Cell.new(true, 1)
+    dead_or_alive_now = rule[:alive] ? 'alive' : 'dead'
+    neighbours = rule[:neighbours]
+    live_or_die = rule[:next_gen_alive] ? 'live' : 'die'
+
+    it "that is #{dead_or_alive_now} with #{rule[:neighbours]} neighbours should #{live_or_die}" do
+      cell = Cell.new(dead_or_alive_now, neighbours)
       cell = cell.next_generation
-      expect(cell.alive?).to be_false
+      expect(cell.alive?).to be(rule[:next_gen_alive])
     end
 
   end
-
-  context 'with more than three neighbours' do
-
-    it 'dies' do
-      cell = Cell.new(true, 4)
-      cell = cell.next_generation
-      expect(cell.alive?).to be_false
-    end
-
-  end
-
-  context 'with two neighbours' do
-
-    it 'stays alive' do
-      cell = Cell.new(true, 2)
-      cell = cell.next_generation
-      expect(cell.alive?).to be_true
-    end
-
-  end
-
-  context 'with three neighbours' do
-
-    it 'stays alive' do
-      cell = Cell.new(true, 3)
-      cell = cell.next_generation
-      expect(cell.alive?).to be_true
-    end
-
-  end
-
-end
-
-describe 'cell is dead' do
-
-  context 'with not 3 neighbours' do
-
-    it 'stays dead' do
-      cell = Cell.new(false, 1)
-      cell = cell.next_generation
-      expect(cell.alive?).to be_false
-    end
-
-  end
-
-  context 'with three live neighbours' do
-
-    it 'becomes alive' do
-      cell = Cell.new(true, 3)
-      cell = cell.next_generation
-      expect(cell.alive?).to be_true
-    end
-
-  end
-
-end
 
 end
