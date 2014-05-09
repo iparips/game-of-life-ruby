@@ -1,11 +1,11 @@
 class Cell
-  def initialize(alive, neighbours)
-    @alive, @neighbours = alive, neighbours
+  def initialize(alive)
+    @alive = alive
   end
 
-  def next_generation
-    alive = (@neighbours == 3) || (@alive && @neighbours == 2)
-    Cell.new(alive, @neighbours)
+  def next_generation(neighbours)
+    alive = (neighbours == 3) || (@alive && neighbours == 2)
+    Cell.new(alive)
   end
 
   def alive?
