@@ -4,7 +4,6 @@ require 'game'
 describe Game do
 
   context 'empty game' do
-
     it "stays empty" do
       game = Game.create(3, <<-GOL)
 ---
@@ -19,7 +18,6 @@ describe Game do
 ---
       GOL
     end
-
   end
 
 end
