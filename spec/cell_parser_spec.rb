@@ -47,14 +47,14 @@ describe "CellParser" do
     end
 
     it "renders a list of mixed cells" do
-      expect(CellParser.render([Cell.new(true), Cell.new(false)])).to eq('*-')
+      expect(CellParser.render( [ Cell.new(true), Cell.new(false) ] )).to eq("*-\n")
     end
 
     describe "rendering multiple lines" do
 
       it "renders a list of mixed sells given width" do
-        result = CellParser.render(2, [Cell.new(true), Cell.new(false), Cell.new(true), Cell.new(false)])
-        expect(result).to eq("*-\n*-")
+        result = CellParser.render(2, [ Cell.new(true), Cell.new(false), Cell.new(true), Cell.new(false) ])
+        expect(result).to eq("*-\n*-\n")
       end
 
     end

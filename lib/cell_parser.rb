@@ -18,7 +18,7 @@ module CellParser
         string += render_single(cell)
       end
 
-      string
+      string += "\n"
     end
 
     def render_single cell
