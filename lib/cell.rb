@@ -1,4 +1,13 @@
 class Cell
+
+  def self.live
+    Cell.new(true)
+  end
+
+  def self.dead
+    Cell.new(false)
+  end
+
   def initialize(alive)
     @alive = alive
   end
