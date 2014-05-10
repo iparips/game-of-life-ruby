@@ -18,21 +18,22 @@ describe "CellParser" do
 
     describe "parsing multiple cells on a single line" do
 
+      #TODO: start here, changing CellParser to return a Matrix instead of an Array
       it "parses 3 cells with a mix of dead and alive ones" do
         cells = CellParser.parse('-*-')
-        expect(cells.map(&:alive?)).to match_array([false, true, false])
+        expect(cells.row(0).to_a.map(&:alive?)).to match_array([false, true, false])
       end
 
     end
 
-    describe "parsing multiple cells on a multiple line" do
-
-      it "parses 2 lines of cells" do
-        cells = CellParser.parse("-*-\n---")
-        expect(cells.map(&:alive?)).to match_array([false, true, false, false, false, false])
-      end
-
-    end
+    # describe "parsing multiple cells on a multiple line" do
+    #
+    #   it "parses 2 lines of cells" do
+    #     cells = CellParser.parse("-*-\n---")
+    #     expect(cells.map(&:alive?)).to match_array([false, true, false, false, false, false])
+    #   end
+    #
+    # end
 
   end
 

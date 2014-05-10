@@ -1,3 +1,4 @@
+require 'matrix'
 require 'cell'
 
 module CellParser
@@ -6,7 +7,11 @@ module CellParser
 
     def parse grid_string
       lines = grid_string.split("\n")
-      lines.map { |line| parse_line(line) }.flatten
+      grid = Matrix[]
+      lines.each do |line|
+        grid = Matrix.rows(grid.to_a << parse_line(line))
+      end
+      grid
     end
 
     def render(width = nil, cells)
