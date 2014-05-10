@@ -1,10 +1,10 @@
 require 'matrix'
-require 'neighbours_calc'
+require 'neighbours'
 
-describe NeighboursCalc do
+describe Neighbours do
 
   cells = nil
-  subject { NeighboursCalc.calc(cells, 1, 1) }
+  subject { Neighbours.calc_alive(cells, 1, 1) }
 
   it "no live neighbours" do
     cells = Matrix[

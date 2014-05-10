@@ -1,5 +1,6 @@
 require 'parser'
 require 'renderer'
+require 'neighbours'
 
 class Game
 
@@ -13,11 +14,18 @@ class Game
   end
 
   def next_generation
-    next_gen_cells = @cells.map do |cell|
-      cell.next_generation(calc_neighbours(cell))
+
+    new_cells = Array.new(@cells.size) { Array.new }
+
+    @cells.each_with_index do |cell, row, col|
+      neighbours = Neighbours.calc_alive(@cells, col, row)
+      new_cell = cell.next_generation(neighbours)
+      puts "col:#{col}, row:#{row}"
+      new_cells[row][col] = new_cell
     end
 
-    @cells = next_gen_cells
+    @cells = new_cells
+
   end
 
   def to_s
@@ -26,8 +34,12 @@ class Game
 
   private
 
+  def process_row(row)
+
+  end
+
   def calc_neighbours(cell)
-    0
+    Neighbours.calc_alive(@cells, cell)
   end
 
 end

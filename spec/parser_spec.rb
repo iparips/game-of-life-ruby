@@ -6,11 +6,11 @@ describe Parser do
   describe "parsing a single cell" do
 
     it "parses an dead cell" do
-      expect(Parser.parse('-').first.alive?).to be_false
+      expect(Parser.parse('-').first.first.alive?).to be_false
     end
 
     it "parses a live cell" do
-      expect(Parser.parse('*').first.alive?).to be_true
+      expect(Parser.parse('*').first.first.alive?).to be_true
     end
 
   end
@@ -19,7 +19,7 @@ describe Parser do
 
     it "parses 3 cells with a mix of dead and alive ones" do
       cells = Parser.parse('-*-')
-      expect(cells.row(0).to_a.map(&:alive?)).to match_array([false, true, false])
+      expect(cells[0].map(&:alive?)).to match_array([false, true, false])
     end
 
   end
@@ -28,7 +28,7 @@ describe Parser do
 
     it "parses 2 lines of cells" do
       cells = Parser.parse("-*-\n---")
-      expect(cells.to_a.flatten.map(&:alive?)).to match_array([false, true, false, false, false, false])
+      expect(cells.flatten.map(&:alive?)).to match_array([false, true, false, false, false, false])
     end
 
   end

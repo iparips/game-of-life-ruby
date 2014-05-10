@@ -1,8 +1,8 @@
-module NeighboursCalc
+module Neighbours
 
   class << self
 
-    def calc(matrix, x, y)
+    def calc_alive(matrix, x, y)
       neighbours = 0
       neighbours +=1 if alive?(matrix, x, y-1)
       neighbours +=1 if alive?(matrix, x+1, y-1)

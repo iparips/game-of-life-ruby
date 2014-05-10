@@ -7,9 +7,11 @@ module Parser
 
     def parse grid_string
       lines = grid_string.split("\n")
-      grid = Matrix[]
-      lines.each do |line|
-        grid = Matrix.rows(grid.to_a << parse_line(line))
+
+      grid = Array.new(lines.count) { Array.new }
+
+      lines.each_with_index do |line, i|
+        grid[i] = parse_line(line)
       end
       grid
     end
