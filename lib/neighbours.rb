@@ -18,7 +18,7 @@ module Neighbours
     private
 
     def alive?(cells, x, y)
-      within_boundary?(cells, x, y) && cells[x][y].alive?
+      within_boundary?(cells, x, y) && cells[y][x].alive?
     end
 
     def within_boundary?(cells, x, y)

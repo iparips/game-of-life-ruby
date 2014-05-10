@@ -17,11 +17,12 @@ class Game
 
     new_cells = Array.new(@cells.size) { Array.new }
 
-    @cells.each_with_index do |cell, row, col|
-      neighbours = Neighbours.calc_alive(@cells, col, row)
-      new_cell = cell.next_generation(neighbours)
-      puts "col:#{col}, row:#{row}"
-      new_cells[row][col] = new_cell
+    @cells.each_with_index do |row, y|
+      row.each_with_index do |cell, x|
+        neighbours = Neighbours.calc_alive(@cells, x, y)
+        new_cell = cell.next_generation(neighbours)
+        new_cells[y][x] = new_cell
+      end
     end
 
     @cells = new_cells
@@ -33,10 +34,6 @@ class Game
   end
 
   private
-
-  def process_row(row)
-
-  end
 
   def calc_neighbours(cell)
     Neighbours.calc_alive(@cells, cell)
