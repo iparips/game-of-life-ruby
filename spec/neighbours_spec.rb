@@ -7,7 +7,7 @@ describe Neighbours do
   subject { Neighbours.calc_alive(cells, 1, 1) }
 
   it "no live neighbours" do
-    cells = Matrix[
+    cells = [
                    [Cell.dead, Cell.dead, Cell.dead],
                    [Cell.dead, Cell.dead, Cell.dead],
                    [Cell.dead, Cell.dead, Cell.dead]
@@ -17,7 +17,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 12 o'clock" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.live, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead]
@@ -27,7 +27,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 1:30" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.live],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead]
@@ -37,7 +37,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 3" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.live],
                     [Cell.dead, Cell.dead, Cell.dead]
@@ -47,7 +47,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 4:30" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.live]
@@ -57,7 +57,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 6" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.live, Cell.dead]
@@ -67,7 +67,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 7:30" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.live, Cell.dead, Cell.dead]
@@ -77,7 +77,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 9" do
-    cells = Matrix[
+    cells = [
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.live, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead]
@@ -87,7 +87,7 @@ describe Neighbours do
   end
 
   it "live neighbour at 10:30" do
-    cells = Matrix[
+    cells = [
                     [Cell.live, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead],
                     [Cell.dead, Cell.dead, Cell.dead]

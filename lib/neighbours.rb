@@ -2,27 +2,27 @@ module Neighbours
 
   class << self
 
-    def calc_alive(matrix, x, y)
+    def calc_alive(cells, x, y)
       neighbours = 0
-      neighbours +=1 if alive?(matrix, x, y-1)
-      neighbours +=1 if alive?(matrix, x+1, y-1)
-      neighbours +=1 if alive?(matrix, x+1, y)
-      neighbours +=1 if alive?(matrix, x+1, y+1)
-      neighbours +=1 if alive?(matrix, x, y+1)
-      neighbours +=1 if alive?(matrix, x-1, y+1)
-      neighbours +=1 if alive?(matrix, x-1, y)
-      neighbours +=1 if alive?(matrix, x-1, y-1)
+      neighbours +=1 if alive?(cells, x, y-1)
+      neighbours +=1 if alive?(cells, x+1, y-1)
+      neighbours +=1 if alive?(cells, x+1, y)
+      neighbours +=1 if alive?(cells, x+1, y+1)
+      neighbours +=1 if alive?(cells, x, y+1)
+      neighbours +=1 if alive?(cells, x-1, y+1)
+      neighbours +=1 if alive?(cells, x-1, y)
+      neighbours +=1 if alive?(cells, x-1, y-1)
       neighbours
     end
 
     private
 
-    def alive?(matrix, x, y)
-      within_boundary?(matrix, x, y) && matrix[y, x].alive?
+    def alive?(cells, x, y)
+      within_boundary?(cells, x, y) && cells[x][y].alive?
     end
 
-    def within_boundary?(matrix, x, y)
-      ( x >= 0 && x < matrix.column_count ) && ( y >= 0 && y < matrix.row_count )
+    def within_boundary?(cells, x, y)
+      ( x >= 0 && x < cells.first.size ) && ( y >= 0 && y < cells.size )
     end
 
   end
