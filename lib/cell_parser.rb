@@ -15,15 +15,21 @@ module CellParser
     end
 
     def render(width = nil, cells)
-      width ||= cells.size
+      width ||= cells.row(0).size
       string = ''
 
-      cells.each_with_index do |cell, index|
-        string += "\n" if index != 0 && index % width == 0
-        string += render_single(cell)
-      end
+      rows = cells.to_a
 
-      string += "\n"
+      rows.map do |row|
+        render_row(row) + "\n"
+      end.join
+
+    end
+
+    def render_row row
+      row.map do |cell|
+        render_single cell
+      end.join
     end
 
     def render_single cell

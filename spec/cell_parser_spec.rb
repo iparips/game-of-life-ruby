@@ -1,3 +1,4 @@
+require 'matrix'
 require 'cell_parser'
 
 describe "CellParser" do
@@ -26,14 +27,14 @@ describe "CellParser" do
 
     end
 
-    # describe "parsing multiple cells on a multiple line" do
-    #
-    #   it "parses 2 lines of cells" do
-    #     cells = CellParser.parse("-*-\n---")
-    #     expect(cells.map(&:alive?)).to match_array([false, true, false, false, false, false])
-    #   end
-    #
-    # end
+    describe "parsing multiple cells on a multiple line" do
+
+      it "parses 2 lines of cells" do
+        cells = CellParser.parse("-*-\n---")
+        expect(cells.to_a.flatten.map(&:alive?)).to match_array([false, true, false, false, false, false])
+      end
+
+    end
 
   end
 
@@ -48,13 +49,15 @@ describe "CellParser" do
     end
 
     it "renders a list of mixed cells" do
-      expect(CellParser.render( [ Cell.new(true), Cell.new(false) ] )).to eq("*-\n")
+      cells = Matrix[[ Cell.new(true), Cell.new(false) ]]
+      expect(CellParser.render(cells)).to eq("*-\n")
     end
 
     describe "rendering multiple lines" do
 
-      it "renders a list of mixed sells given width" do
-        result = CellParser.render(2, [ Cell.new(true), Cell.new(false), Cell.new(true), Cell.new(false) ])
+      it "renders a list of sells" do
+        cells = Matrix[[ Cell.new(true), Cell.new(false) ], [ Cell.new(true), Cell.new(false) ]]
+        result = CellParser.render(cells)
         expect(result).to eq("*-\n*-\n")
       end
 
