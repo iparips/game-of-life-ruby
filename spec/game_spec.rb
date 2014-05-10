@@ -37,4 +37,21 @@ describe Game do
     end
   end
 
+  context 'dead cell with 3 neighbours' do
+    it "comes alive" do
+      game = Game.create(<<-GOL)
+-*--
+-**-
+----
+      GOL
+
+      game.next_generation
+      expect(game.to_s).to eq(<<-GOL)
+-**-
+-**-
+----
+      GOL
+    end
+  end
+
 end
