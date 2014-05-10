@@ -4,17 +4,18 @@ require 'neighbours'
 
 class Game
 
-  def self.create(width, init_state)
+  def self.create(init_state)
     cells = Parser.parse(init_state)
-    Game.new(width, cells)
+    Game.new(cells)
   end
 
-  def initialize(width, cells)
-    @width, @cells = width, cells
+  def initialize(cells)
+    @cells = cells
   end
 
   def next_generation
 
+    # y comes first in a 2d array
     new_cells = Array.new(@cells.size) { Array.new }
 
     @cells.each_with_index do |row, y|
@@ -30,7 +31,7 @@ class Game
   end
 
   def to_s
-    Renderer.render(@width, @cells)
+    Renderer.render(@cells)
   end
 
   private
