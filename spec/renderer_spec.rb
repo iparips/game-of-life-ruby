@@ -12,14 +12,14 @@ describe Renderer do
   end
 
   it "renders a list of mixed cells" do
-    cells = Matrix[[ Cell.new(true), Cell.new(false) ]]
+    cells = [[ Cell.new(true), Cell.new(false) ]]
     expect(Renderer.render(cells)).to eq("*-\n")
   end
 
   describe "rendering multiple lines" do
 
     it "renders a list of sells" do
-      cells = Matrix[[ Cell.new(true), Cell.new(false) ], [ Cell.new(true), Cell.new(false) ]]
+      cells = [[ Cell.new(true), Cell.new(false) ], [ Cell.new(true), Cell.new(false) ]]
       result = Renderer.render(cells)
       expect(result).to eq("*-\n*-\n")
     end
