@@ -1,7 +1,7 @@
 require 'matrix'
 require 'cell'
 
-module CellParser
+module Parser
 
   class << self
 
@@ -12,28 +12,6 @@ module CellParser
         grid = Matrix.rows(grid.to_a << parse_line(line))
       end
       grid
-    end
-
-    def render(width = nil, cells)
-      width ||= cells.row(0).size
-      string = ''
-
-      rows = cells.to_a
-
-      rows.map do |row|
-        render_row(row) + "\n"
-      end.join
-
-    end
-
-    def render_row row
-      row.map do |cell|
-        render_single cell
-      end.join
-    end
-
-    def render_single cell
-      cell.alive? ? '*' : '-'
     end
 
     private

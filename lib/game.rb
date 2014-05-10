@@ -1,9 +1,10 @@
-require 'cell_parser'
+require 'parser'
+require 'renderer'
 
 class Game
 
   def self.create(width, init_state)
-    cells = CellParser.parse(init_state)
+    cells = Parser.parse(init_state)
     Game.new(width, cells)
   end
 
@@ -20,7 +21,7 @@ class Game
   end
 
   def to_s
-    CellParser.render(@width, @cells)
+    Renderer.render(@width, @cells)
   end
 
   private
