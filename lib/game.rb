@@ -14,7 +14,6 @@ class Game
   end
 
   def next_generation
-
     # y comes first in a 2d array
     new_cells = Array.new(@cells.size) { Array.new }
 
