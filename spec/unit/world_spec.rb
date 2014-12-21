@@ -1,5 +1,4 @@
-require 'rspec'
-require_relative '../lib/world'
+require_relative '../spec_helper'
 
 describe World do
 
