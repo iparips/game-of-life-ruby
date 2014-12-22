@@ -3,14 +3,13 @@ class NeighboursCounter
   # x, y -> coordinates of the current cell
   def count(x, y, all_cells)
     neighbours = 0
-    neighbours+=1 if alive?( x-1, y-1, all_cells )
-    neighbours+=1 if alive?( x,   y-1, all_cells )
-    neighbours+=1 if alive?( x+1, y-1, all_cells )
-    neighbours+=1 if alive?( x-1, y,   all_cells )
-    neighbours+=1 if alive?( x+1, y,   all_cells )
-    neighbours+=1 if alive?( x-1, y+1, all_cells )
-    neighbours+=1 if alive?( x,   y+1, all_cells )
-    neighbours+=1 if alive?( x+1, y+1, all_cells )
+
+    (x-1..x+1).each do |i|
+      (y-1..y+1).each do |j|
+        neighbours +=1 if alive?(i, j, all_cells) unless i == x && j == y
+      end
+    end
+
     neighbours
   end
 
