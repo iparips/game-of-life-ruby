@@ -2,11 +2,11 @@ require_relative '../spec_helper'
 
 describe Io do
 
-  describe '.string_to_grid' do
+  describe '.string_to_arr' do
 
     let(:string) { "--\n-*" }
 
-    subject { Io.string_to_grid(string) }
+    subject { Io.string_to_arr(string) }
 
     it 'converts to grid' do
       expect(subject).to eq [
@@ -17,14 +17,14 @@ describe Io do
 
   end
 
-  describe '.grid_to_string' do
+  describe '.arr_to_string' do
 
     let(:grid) {[
         [true, false],
         [false, true]
       ]}
 
-      subject { Io.grid_to_string(grid) }
+      subject { Io.arr_to_string(grid) }
 
     it 'converts to string' do
       expect(subject).to eq "*-\n-*"

@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe World do
+describe Grid do
 
 	let(:first_gen_cell) { double("first gen cell") }
 	let(:second_gen_cell) { double("second gen cell") }
@@ -17,7 +17,7 @@ describe World do
 	let(:neighbours_counter) { double('counter') }
 	let(:dead_or_alive) { double('dead or alive') }
 
-	subject { World.new neighbours_counter, dead_or_alive }
+	subject { Grid.new neighbours_counter, dead_or_alive }
 
 	before do
 		allow(neighbours_counter).to receive(:count).and_return(neighbours_count)
@@ -30,7 +30,7 @@ describe World do
 
 	it 'calls neighbours_counter' do
 		subject.next_iteration(initial_grid)
-		expect(neighbours_counter).to have_received(:count).with(0,0,first_gen_cell)
+		expect(neighbours_counter).to have_received(:count).with(0,0,initial_grid)
 	end
 
 	it 'calls dead_or_alive' do
